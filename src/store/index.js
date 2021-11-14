@@ -56,9 +56,5 @@ export default createStore({
 				state.cart = JSON.parse(cart)
 			}
 		}
-	},
-	actions: {
-	},
-	modules: {
 	}
 })

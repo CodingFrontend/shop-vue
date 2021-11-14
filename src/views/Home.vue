@@ -7,22 +7,22 @@
     />
 
     <div class="container">
-      <div class="product-cards-list">
-        <ProductSummaryCard
-          v-for="product in items"
-          :key="product.id"
-          :product="product"
-          @view-product="viewProduct($event)"
-        />
-      </div>
+      <ul class="product-cards-list">
+        <li v-for="product in items" :key="product.id">
+          <ProductSummaryCard
+            :product="product"
+            @view-product="viewProduct($event)"
+          />
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-import items from "../data/items.js";
 import ProductSummaryCard from "../components/ProductSummaryCard.vue";
 import ProductDescriptionDrawer from "../components/ProductDescriptionDrawer.vue";
+import axios from "axios";
 
 export default {
   name: "Home",
@@ -32,12 +32,18 @@ export default {
   },
   data() {
     return {
-      items: items,
       product: null,
+      items: [],
       active: {
         product_drawer: false,
       },
     };
+  },
+  mounted() {
+    axios.get("https://fakestoreapi.com/products").then((res) => {
+      console.log(res.data);
+      this.items = res.data;
+    });
   },
   methods: {
     viewProduct(product) {
@@ -55,6 +61,19 @@ export default {
 .product-cards-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  li {
+    width: calc(33.333% - 40px);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 5px gray;
+    @media (min-width: 500px) {
+      width: calc(33.333% - 40px);
+    }
+  }
 }
 </style>

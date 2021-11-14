@@ -1,7 +1,9 @@
 <template>
   <div class="cart-item-card">
     <div class="header">
-      <h3>{{ product.name }}</h3>
+      <span>{{ product.category }}</span>
+      <h3>{{ product.title }}</h3>
+      <img :src="product.image" alt="product image" />
       <h4>In Cart: {{ product.quantity }}</h4>
       <h4>Total Cost: {{ item_cost.toFixed(2) }}</h4>
     </div>

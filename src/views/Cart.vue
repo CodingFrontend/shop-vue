@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Your cart</h1>
+    {{ products }}
     <CartItem
       v-for="product in products"
       :key="product.id"
