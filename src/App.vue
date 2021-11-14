@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <div class="container">
+    <div class="home-container container">
       <router-link :class="{ active: $route.name === 'Home' }" to="/"
         >Home</router-link
       >
@@ -81,6 +81,10 @@ body {
   max-width: 1170px;
   padding: 0 20px;
   margin: 0 auto;
+ 
+}
+
+.home-container {
   display: flex;
   justify-content: space-between;
 }

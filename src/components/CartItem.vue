@@ -1,14 +1,12 @@
-<template>
-  <div class="cart-item-card">
-    <div class="header">
+<template> 
+  <div class="card cart-item-card">
+   <img :src="product.image" class="product-image" alt="product image" />
+    <div class="card-content">
       <span>{{ product.category }}</span>
       <h3>{{ product.title }}</h3>
-      <img :src="product.image" alt="product image" />
       <h4>In Cart: {{ product.quantity }}</h4>
       <h4>Total Cost: {{ item_cost.toFixed(2) }}</h4>
     </div>
-
-    <p>{{ description }}</p>
   </div>
 </template>
 
@@ -28,16 +26,17 @@ export default {
 
 <style lang="scss">
 .cart-item-card {
-  width: 90%;
   margin: 5%;
   background-color: #fff;
   box-shadow: 0 0 5px gray;
   border-radius: 5px;
   padding: 10px;
   text-align: left;
-  .header {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  img {
+    margin: 10px 40px 10px 10px;
+    max-height: 200px;
   }
 }
 </style>
